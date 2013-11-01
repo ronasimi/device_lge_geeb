@@ -17,6 +17,13 @@
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        VisualizationWallpapers
+
+
 # Get the long list of APNs
 PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
@@ -26,7 +33,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 PRODUCT_NAME := full_geeb
 PRODUCT_DEVICE := geeb
 PRODUCT_BRAND := LGE
-PRODUCT_MODEL := Optimus G
+PRODUCT_MODEL := LG Optimus G
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 

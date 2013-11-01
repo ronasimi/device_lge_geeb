@@ -35,17 +35,19 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     charger
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
-
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/lge/geeb/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 	device/lge/geeb/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+
+ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
+LOCAL_KERNEL := device/lge/geeb_svelte-kernel/kernel
+else
+LOCAL_KERNEL := device/lge/geeb-kernel/kernel
+endif
+
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
 
 # Script for baseband name resolution
 PRODUCT_COPY_FILES += \
@@ -104,9 +106,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-# GPS configuration
-PRODUCT_COPY_FILES += \
-	device/lge/geeb/gps.conf:system/etc/gps.conf
 
 # NFC firmware
 PRODUCT_COPY_FILES += \
@@ -132,7 +131,8 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196608
@@ -161,16 +161,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.call_ring.multiple=0
 
 #Upto 3 layers can go through overlays
-PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=3
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	debug.sf.hw=1 \
-	debug.egl.hw=1 \
-	debug.composition.type=dyn \
-	video.accelerate.hw=1 \
-	debug.performance.tuning=1 \
-	debug.mdpcomp.logs=0 \
-	debug.enable.wl_log=1
+PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -187,7 +178,8 @@ PRODUCT_PACKAGES += \
 	liboverlay \
 	hwcomposer.msm8960 \
 	gralloc.msm8960 \
-	copybit.msm8960
+	copybit.msm8960 \
+	memtrack.msm8960
 
 PRODUCT_PACKAGES += \
 	audio_policy.msm8960 \
@@ -229,12 +221,22 @@ PRODUCT_PACKAGES += \
 	libstagefrighthw \
 	libc2dcolorconvert
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+        device/lge/geeb/gps.conf:system/etc/gps.conf
+
+# GPS
 PRODUCT_PACKAGES += \
-	libloc_adapter \
-	libloc_eng \
-	libloc_api_v02 \
-	libgps.utils \
-	gps.msm8960
+        libloc_adapter \
+        libloc_eng \
+        libloc_api_v02 \
+        libloc_ds_api \
+        libloc_core \
+        libizat_core \
+        libgeofence \
+        libgps.utils \
+        gps.msm8960 \
+        flp.msm8960
 
 PRODUCT_PACKAGES += \
 	bdAddrLoader \
@@ -245,8 +247,8 @@ PRODUCT_PACKAGES += \
 	keystore.msm8960
 
 PRODUCT_PACKAGES += \
-	wpa_supplicant_overlay.conf \
-	p2p_supplicant_overlay.conf
+        wpa_supplicant_overlay.conf \
+        p2p_supplicant_overlay.conf
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
@@ -280,7 +282,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# This is the mako-specific audio package
-$(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
+# This is the geeb-specific audio package
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage10.mk)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)

@@ -27,13 +27,10 @@ TARGET_NO_BOOTLOADER := true
 
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=geeb lpj=67677
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=geeb lpj=67677 user_debug=31
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 
-TARGET_KERNEL_CONFIG := geeb_defconfig
-TARGET_KERNEL_SOURCE := kernel/lge/geeb
-
-TARGET_OTA_ASSERT_DEVICE := mako,geeb,gee_a,e970,gee,geebus
+TARGET_OTA_ASSERT_DEVICE := geeb,gee_a,e970,gee,geebus,e971,e973,e975,geehrc,geebusc,geeb_att,geeb_att_us,geespr
 
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_LEGACY_ALSA_AUDIO:= false
@@ -71,7 +68,7 @@ USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_OVERLAY := true
 TARGET_USES_SF_BYPASS := true
-TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_C2D_COMPOSITON := true
 
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_UI_LIB := librecovery_ui_geeb
@@ -91,7 +88,7 @@ BOARD_USES_SECURE_SERVICES := true
 BOARD_USES_EXTRA_THERMAL_SENSOR := true
 BOARD_USES_CAMERA_FAST_AUTOFOCUS := true
 
-BOARD_LIB_DUMPSTATE := libdumpstate.geeb
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.geeb
 
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
@@ -114,7 +111,6 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION := \
        app.te \
        bluetooth.te \
-       compatibility.te \
        device.te \
        domain.te \
        drmserver.te \
@@ -131,3 +127,10 @@ BOARD_SEPOLICY_UNION := \
        system.te \
        ueventd.te \
        wpa.te
+
+
+USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
+
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
+HAVE_ADRENO_SOURCE:= false
