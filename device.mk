@@ -33,8 +33,8 @@ $(call inherit-product, device/lge/gee-common/gee-common.mk)
 
 #NFC firmware
 PRODUCT_COPY_FILES += \
-    device/lge/geeb/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so /
-    device/lge/geeb/keypad_8064.kl:system/usr/keylayout/keypad_8064.kl /
+    device/lge/geeb/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
+    device/lge/geeb/keypad_8064.kl:system/usr/keylayout/keypad_8064.kl \
     device/lge/geeb/99kerneltweaks:system/etc/init.d/99kerneltweaks
 
 # Telephony Properties
