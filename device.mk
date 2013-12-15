@@ -40,15 +40,6 @@ PRODUCT_COPY_FILES += \
 	device/lge/geeb/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 	device/lge/geeb/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
-ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
-LOCAL_KERNEL := device/lge/geeb_svelte-kernel/kernel
-else
-LOCAL_KERNEL := device/lge/geeb-kernel/kernel
-endif
-
-PRODUCT_COPY_FILES := \
-	$(LOCAL_KERNEL):kernel
-
 # Script for baseband name resolution
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/fetch-swv:system/bin/fetch-swv \
@@ -247,6 +238,7 @@ PRODUCT_PACKAGES += \
 	keystore.msm8960
 
 PRODUCT_PACKAGES += \
+        hostapd_default.conf \
         wpa_supplicant_overlay.conf \
         p2p_supplicant_overlay.conf
 
@@ -256,8 +248,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         telephony.lteOnCdmaDevice=0 \
         telephony.lteOnGsmDevice=1 \
-        ro.telephony.default_network=9 \
-        ro.ril.def.preferred.network=9
+        ro.telephony.default_network=9
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	drm.service.enabled=true
@@ -283,6 +274,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # This is the geeb-specific audio package
-$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage10.mk)
+# $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage10.mk)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
