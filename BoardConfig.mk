@@ -41,7 +41,7 @@ COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 TARGET_NO_BOOTLOADER := true
 
 # Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/lge/geeb
+TARGET_KERNEL_SOURCE := kernel/lge/houst0nn_kernel_lge_geeb
 TARGET_KERNEL_CONFIG := geeb_defconfig
 
 BOARD_KERNEL_BASE := 0x80200000
@@ -123,7 +123,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_HAVE_LOW_LATENCY_AUDIO := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
--include vendor/lge/gee/BoardConfigVendor.mk
+-include vendor/lge/geeb/BoardConfigVendor.mk
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
