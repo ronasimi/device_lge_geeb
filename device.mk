@@ -61,7 +61,8 @@ PRODUCT_COPY_FILES += \
 	device/lge/geeb/fstab.geeb:root/fstab.geeb \
 	device/lge/geeb/ueventd.geeb.rc:root/ueventd.geeb.rc \
 	device/lge/geeb/media_profiles.xml:system/etc/media_profiles.xml \
-	device/lge/geeb/media_codecs.xml:system/etc/media_codecs.xml
+	device/lge/geeb/media_codecs.xml:system/etc/media_codecs.xml \
+        device/lge/geeb/twrp.fstab:etc/twrp.fstab
 
 # Prebuilt kl and kcm keymaps
 PRODUCT_COPY_FILES += \
