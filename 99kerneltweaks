@@ -1,9 +1,38 @@
-#CPU tweaks
+#########################
+## This file allows you
+## to customize options
+## for the kernel without
+## installing a control 
+## app like trickstermod.
+## Credit to paulicat for
+## the original file.
+#########################
+
+#########################
+## CPU tweaks ###########
+#echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+#echo 192000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+#echo 1512000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+#echo "95" /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+#echo "120000" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+#echo "1" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+#echo "5" > /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+#echo "4" > /sys/devices/system/cpu/cpufreq/ondemand/freq_step
+#echo "noop" > /sys/block/mmcblk0/queue/scheduler
+#echo 1024 > /sys/block/mmcblk0/queue/read_ahead_kb
+#echo 1 > /sys/kernel/fast_charge/force_fast_charge
+
+#########################
+## FS tweaks ############
 echo 2048 > /sys/block/mmcblk0/queue/read_ahead_kb
+
+#########################
+## Enable fast charge ###
 echo 1 > /sys/kernel/fast_charge/force_fast_charge
 
-# set voltages
-#echo 384000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+#########################
+## Set voltages #########
+echo 384000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 432000 775000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 486000 775000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 540000 800000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
@@ -26,13 +55,48 @@ echo 1404000 1037500 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 1458000 1037500 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 1512000 1050000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 
+#########################
+## Audio volume tweaks ##
 echo 45 45 > /sys/kernel/sound_control/gpl_headphone_gain
 echo 45 45 > /sys/kernel/sound_control/gpl_headphone_pa_gain
 echo 45 > /sys/kernel/sound_control/gpl_speaker_gain
 
-#Colour tweaks
+#########################
+## Vibration intensity ##
+echo "70">/sys/class/timed_output/vibrator/amp
+
+#########################
+## Colour tweaks ########
+## LEAVE THIS IN
+echo 1 > /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+
+## Custom (nice balance of saturation and gamma)
 echo "362 64 21 118 0 29 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
 echo "410 114 21 118 0 27 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
 echo "409 114 21 118 0 26 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
 echo "245 248 247" > /sys/devices/platform/kcal_ctrl.0/kcal
-echo 1 > /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+## LG
+#echo "212 114 21 118 0 0 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 114 21 118 0 0 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 114 21 118 0 0 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "255 255 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+## Google
+#echo "212 32 35 116 0 31 16 80 51 3" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 64 68 118 1 0 0 48 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 64 68 118 1 0 0 48 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "255 255 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+## PA-Halfbreed
+#echo "212 64 68 118 0 25 4 66 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 64 68 118 0 25 4 66 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 64 68 118 0 25 4 66 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "255 255 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+## PA-Contrasty
+#echo "212 64 68 118 0 26 0 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 64 68 118 0 26 0 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 64 68 118 0 26 0 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "245 244 240" > /sys/devices/platform/kcal_ctrl.0/kcal
+## PA-Brighter
+#echo "212 49 21 118 0 31 9 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 49 21 118 0 31 9 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 49 21 118 0 31 9 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "245 244 240" > /sys/devices/platform/kcal_ctrl.0/kcal
