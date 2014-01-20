@@ -32,8 +32,8 @@ echo 1 > /sys/kernel/fast_charge/force_fast_charge
 
 #########################
 ## Set voltages #########
-#echo 162000 700000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
-#echo 270000 725000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+#echo 162000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+#echo 270000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 #echo 378000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 384000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 432000 775000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
