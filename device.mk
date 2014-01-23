@@ -41,3 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=1 \
     ro.telephony.default_network=9 \
     ro.ril.def.preferred.network=9
+
+# USB OTG support
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.usb.host=1
