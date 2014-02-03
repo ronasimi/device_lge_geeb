@@ -29,6 +29,10 @@ echo 2048 > /sys/block/mmcblk0/queue/read_ahead_kb
 echo 1 > /sys/kernel/fast_charge/force_fast_charge
 
 #########################
+## Enable OTG ###########
+echo 1 > /sys/module/msm_otg/parameters/otg_hack_enable
+
+#########################
 ## Set voltages #########
 echo 384000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
 echo 432000 775000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
