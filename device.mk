@@ -37,7 +37,8 @@ PRODUCT_COPY_FILES += \
 
 #init.d tweaks
 PRODUCT_COPY_FILES += \
-    device/lge/geeb/99kerneltweaks:system/etc/init.d/99kerneltweaks
+    device/lge/geeb/99kerneltweaks:system/etc/init.d/99kerneltweaks \
+    device/lge/geeb/98netflix:system/etc/init.d/98netflix
 
 # Telephony Properties
 PRODUCT_PROPERTY_OVERRIDES += \
