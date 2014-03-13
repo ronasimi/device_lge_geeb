@@ -60,10 +60,6 @@ echo 45 45 > /sys/kernel/sound_control/gpl_headphone_pa_gain
 echo 45 > /sys/kernel/sound_control/gpl_speaker_gain
 
 #########################
-## Vibration intensity ##
-echo "70">/sys/class/timed_output/vibrator/amp
-
-#########################
 ## Colour tweaks ########
 ## LEAVE THIS IN
 echo 1 > /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
