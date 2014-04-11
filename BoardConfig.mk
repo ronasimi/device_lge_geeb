@@ -118,7 +118,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_HAVE_LOW_LATENCY_AUDIO := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
--include vendor/lge/geeb/BoardConfigVendor.mk
+-include vendor/lge/gee/BoardConfigVendor.mk
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
