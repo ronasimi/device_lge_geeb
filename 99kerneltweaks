@@ -22,7 +22,7 @@
 
 #########################
 ## GPU tweaks ###########
-echo "simple" > /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor
+#echo "simple" > /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor
 
 #########################
 ## FS tweaks ############
