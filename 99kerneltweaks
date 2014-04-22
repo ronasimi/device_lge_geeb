@@ -21,6 +21,10 @@
 #echo "noop" > /sys/block/mmcblk0/queue/scheduler
 
 #########################
+## GPU tweaks ###########
+echo "simple" > /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor
+
+#########################
 ## FS tweaks ############
 echo 2048 > /sys/block/mmcblk0/queue/read_ahead_kb
 
