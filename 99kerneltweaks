@@ -10,7 +10,7 @@
 
 #########################
 ## intelli_plug #########
-echo 1 > /sys/module/intelli_plug/parameters/intelli_plug_active
+#echo 1 > /sys/module/intelli_plug/parameters/intelli_plug_active
 
 #########################
 ## CPU tweaks ###########
@@ -72,7 +72,7 @@ echo 45 > /sys/kernel/sound_control/gpl_speaker_gain
 
 #########################
 ## Vibration intensity ##
-echo "70">/sys/class/timed_output/vibrator/amp
+#echo "70">/sys/class/timed_output/vibrator/amp
 
 #########################
 ## Colour tweaks ########
