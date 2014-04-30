@@ -1,5 +1,5 @@
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+# $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
@@ -12,14 +12,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+#$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/lge/geeb/full_geeb.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := geeb
-PRODUCT_NAME := cm_geeb
+PRODUCT_NAME := pa_geeb
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := Optimus G
 PRODUCT_MANUFACTURER := LGE
