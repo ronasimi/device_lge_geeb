@@ -14,16 +14,13 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL geehrc devices, and
-# are also specific to gee devices
+# This file includes all definitions that apply to ALL gee devices, and
+# are also specific to geeb devices
 #
 # Everything in this directory will become public
 
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product, vendor/lge/gee/gee-vendor.mk)
-
-## overlays
-DEVICE_PACKAGE_OVERLAYS += device/lge/geeb/overlay
 
 ## common overlays
 DEVICE_PACKAGE_OVERLAYS += device/lge/gee-common/overlay
