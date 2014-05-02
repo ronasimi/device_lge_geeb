@@ -10,6 +10,7 @@
 
 #########################
 ## intelli_plug #########
+#stop mpdecision
 #echo 1 > /sys/module/intelli_plug/parameters/intelli_plug_active
 
 #########################
