@@ -28,14 +28,18 @@ DEVICE_PACKAGE_OVERLAYS += device/lge/gee-common/overlay
 # Inherit from gee-common
 $(call inherit-product, device/lge/gee-common/gee-common.mk)
 
-#NFC firmware
+# NFC firmware
 PRODUCT_COPY_FILES += \
     device/lge/geeb/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
 
-#init.d tweaks
+# init.d tweaks
 PRODUCT_COPY_FILES += \
     device/lge/geeb/99kerneltweaks:system/etc/init.d/99kerneltweaks \
     device/lge/geeb/98netflix:system/etc/init.d/98netflix
+
+# Boot animation
+PRODUCT_COPY_FILES += \
+    device/lge/geeb/bootanimation.zip:system/media/bootanimation.zip
 
 # Telephony Properties
 PRODUCT_PROPERTY_OVERRIDES += \
