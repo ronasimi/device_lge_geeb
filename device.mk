@@ -285,3 +285,11 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 # $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage10.mk)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
+
+# AK kernel stuff
+PRODUCT_COPY_FILES += \
+        device/lge/geeb/ak/system/etc/init.d/00ak:system/etc/init.d/00ak \
+        device/lge/geeb/ak/system/etc/init.d/98fq_codel:system/etc/init.d/98fq_codel \
+        device/lge/geeb/ak/system/etc/init.d/99zram.sh:system/etc/init.d/99zram.sh \
+        device/lge/geeb/ak/system/etc/init.d/N4UKM:system/etc/init.d/N4UKM
+
