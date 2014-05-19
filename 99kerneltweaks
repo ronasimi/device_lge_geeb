@@ -9,26 +9,6 @@
 #########################
 
 #########################
-## intelli_plug #########
-#echo 1 > /sys/module/intelli_plug/parameters/intelli_plug_active
-
-#########################
-## CPU tweaks ###########
-#echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-#echo 384000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-#echo 1512000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-#echo "95" /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-#echo "120000" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-#echo "1" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-#echo "5" > /sys/devices/system/cpu/cpufreq/ondemand/down_differential
-#echo "4" > /sys/devices/system/cpu/cpufreq/ondemand/freq_step
-#echo "noop" > /sys/block/mmcblk0/queue/scheduler
-
-#########################
-## GPU tweaks ###########
-#echo "simple" > /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor
-
-#########################
 ## FS tweaks ############
 echo 2048 > /sys/block/mmcblk0/queue/read_ahead_kb
 
