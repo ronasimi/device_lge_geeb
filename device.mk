@@ -290,6 +290,5 @@ $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
 PRODUCT_COPY_FILES += \
         device/lge/geeb/ak/system/etc/init.d/00ak:system/etc/init.d/00ak \
         device/lge/geeb/ak/system/etc/init.d/98fq_codel:system/etc/init.d/98fq_codel \
-        device/lge/geeb/ak/system/etc/init.d/99zram.sh:system/etc/init.d/99zram.sh \
-        device/lge/geeb/ak/system/etc/init.d/N4UKM:system/etc/init.d/N4UKM
+        device/lge/geeb/ak/system/etc/init.d/99zram.sh:system/etc/init.d/99zram.sh
 
