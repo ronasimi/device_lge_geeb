@@ -41,7 +41,7 @@ COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 TARGET_NO_BOOTLOADER := true
 
 # Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/lge/jolla-kernel_G
+TARGET_KERNEL_SOURCE := kernel/lge/msm
 TARGET_KERNEL_CONFIG := geeb_defconfig
 
 BOARD_KERNEL_BASE := 0x80200000
@@ -170,7 +170,6 @@ HAVE_ADRENO_SOURCE:= false
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-TARGET_QCOM_DISPLAY_VARIANT := caf
 MALLOC_IMPL := dlmalloc
 
 -include vendor/lge/geeb/BoardConfigVendor.mk
@@ -185,7 +184,7 @@ RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 #TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_JB_CRYPTO := true
+TW_INCLUDE_L_CRYPTO := true
 TW_FLASH_FROM_STORAGE := true
 TW_NO_USB_STORAGE := true
 HAVE_SELINUX := true
