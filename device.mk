@@ -46,8 +46,7 @@ PRODUCT_COPY_FILES += \
 
 # Script for baseband name resolution
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/fetch-swv:system/bin/fetch-swv \
-	device/lge/geeb/efsbackup.sh:system/bin/efsbackup.sh
+	device/lge/geeb/fetch-swv:system/bin/fetch-swv
 
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/audio_policy.conf:system/etc/audio_policy.conf
