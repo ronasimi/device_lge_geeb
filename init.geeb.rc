@@ -162,15 +162,11 @@ on post-fs-data
 # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
-    write /dev/wcnss_wlan 1
+    chown system system /dev/wcnss_wlan
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
-
-    # Workaround for conn_init not copying the updated firmware
-    rm /data/misc/wifi/WCNSS_qcom_cfg.ini
-    rm /data/misc/wifi/WCNSS_qcom_wlan_nv.bin
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
@@ -281,6 +277,9 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
+
+    # disable diag port
+    rm /dev/diag
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -450,10 +449,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input
 
-service conn_init /system/bin/conn_init
-    class late_start
+service wcnss_init /system/bin/sh /system/etc/init.geeb.wifi.sh
+    class main
     user system
     group system wifi
+    seclabel u:r:conn_init:s0
     oneshot
 
 service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
@@ -479,6 +479,11 @@ service diag_mdlog /system/bin/diag_mdlog -s 100
     class late_start
     disabled
 
+service qrngd /system/bin/qrngd -f
+    class main
+    user root
+    group root
+    
 service fetch-swv /system/bin/fetch-swv
     class late_start
     oneshot

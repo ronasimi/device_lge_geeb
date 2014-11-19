@@ -39,14 +39,22 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-PRODUCT_COPY_FILES += \
-	device/lge/geeb/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
-	device/lge/geeb/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-	device/lge/geeb/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        VisualizationWallpapers \
+        librs_jni
 
 # Script for baseband name resolution
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/fetch-swv:system/bin/fetch-swv
+
+PRODUCT_COPY_FILES += \
+	device/lge/geeb/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
+	device/lge/geeb/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+	device/lge/geeb/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
+	device/lge/geeb/init.geeb.wifi.sh:system/etc/init.geeb.wifi.sh
 
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/audio_policy.conf:system/etc/audio_policy.conf
@@ -275,6 +283,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
+# Hardware codecs
+PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.hw.aac.encoder=true
+
+PRODUCT_PACKAGES += \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
+
+# QRNGD
+PRODUCT_PACKAGES += qrngd
+	
 # Enable USB-OTG
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.usb.host=1c
