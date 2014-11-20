@@ -138,8 +138,6 @@ static struct camera_size_type zsl_picture_sizes[] = {
 };
 
 static camera_size_type default_picture_sizes[] = {
-  { 4208, 3120}, // 13MP
-  { 4128, 3096}, // 12.8MP
   { 4000, 3000}, // 12MP
   { 3264, 2448}, // 8MP
   { 3264, 1836}, // Picture Size to match 1080p,720p AR
@@ -3664,7 +3662,9 @@ status_t QCameraHardwareInterface::setPreviewSizeTable(void)
 end:
     /* Save the table in global member*/
     mPreviewSizes = preview_size_table;
-    mPreviewSizeCount = preview_table_size - i;
+    /* Also remove the smallest preview (176x144) in the returned list, which occurs
+     * last - it's broken */
+    mPreviewSizeCount = preview_table_size - i - 1;
 
     return ret;
 }
