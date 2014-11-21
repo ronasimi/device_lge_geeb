@@ -68,6 +68,9 @@ TARGET_BOARD_INFO_FILE := device/lge/geeb/board-info.txt
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/geeb/bluetooth
 
+# Use the QCOM PowerHAL
+TARGET_USES_QCOM_POWERHAL := true
+
 # FIXME: HOSTAPD-derived wifi driver
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
