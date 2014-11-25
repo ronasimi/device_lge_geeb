@@ -178,7 +178,7 @@ EXTENDED_FONT_FOOTPRINT := true
 
 MALLOC_IMPL := dlmalloc
 
--include vendor/lge/geeb/BoardConfigVendor.mk
+-include vendor/lge/gee/BoardConfigVendor.mk
 
 #TWRP config
 #switch .fstabs to build recovery

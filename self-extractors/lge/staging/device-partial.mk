@@ -14,12 +14,12 @@
 
 # LGE blob(s) necessary for Geeb hardware
 PRODUCT_COPY_FILES := \
-    vendor/lge/geeb/proprietary/libacdbdata.so:system/lib/libacdbdata.so:lge \
-    vendor/lge/geeb/proprietary/libAKM.so:system/lib/libAKM.so:lge \
-    vendor/lge/geeb/proprietary/libcamera_fast_af.so:system/lib/libcamera_fast_af.so:lge \
-    vendor/lge/geeb/proprietary/libmorpho_noise_reduction.so:system/lib/libmorpho_noise_reduction.so:lge \
-    vendor/lge/geeb/proprietary/keymaster.b00:system/vendor/firmware/keymaster/keymaster.b00:lge \
-    vendor/lge/geeb/proprietary/keymaster.b01:system/vendor/firmware/keymaster/keymaster.b01:lge \
-    vendor/lge/geeb/proprietary/keymaster.b02:system/vendor/firmware/keymaster/keymaster.b02:lge \
-    vendor/lge/geeb/proprietary/keymaster.b03:system/vendor/firmware/keymaster/keymaster.b03:lge \
-    vendor/lge/geeb/proprietary/keymaster.mdt:system/vendor/firmware/keymaster/keymaster.mdt:lge
+    vendor/lge/gee/proprietary/libacdbdata.so:system/lib/libacdbdata.so:lge \
+    vendor/lge/gee/proprietary/libAKM.so:system/lib/libAKM.so:lge \
+    vendor/lge/gee/proprietary/libcamera_fast_af.so:system/lib/libcamera_fast_af.so:lge \
+    vendor/lge/gee/proprietary/libmorpho_noise_reduction.so:system/lib/libmorpho_noise_reduction.so:lge \
+    vendor/lge/gee/proprietary/keymaster.b00:system/vendor/firmware/keymaster/keymaster.b00:lge \
+    vendor/lge/gee/proprietary/keymaster.b01:system/vendor/firmware/keymaster/keymaster.b01:lge \
+    vendor/lge/gee/proprietary/keymaster.b02:system/vendor/firmware/keymaster/keymaster.b02:lge \
+    vendor/lge/gee/proprietary/keymaster.b03:system/vendor/firmware/keymaster/keymaster.b03:lge \
+    vendor/lge/gee/proprietary/keymaster.mdt:system/vendor/firmware/keymaster/keymaster.mdt:lge
