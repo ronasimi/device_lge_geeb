@@ -149,6 +149,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false
 
+# Default to AwesomePlayer
+	PRODUCT_PROPERTY_OVERRIDES += \
+	media.stagefright.use-awesome=true 
+
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.apm_sim_not_pwdn=1
