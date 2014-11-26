@@ -255,7 +255,7 @@ set_light_battery(struct light_device_t* dev,
     pthread_mutex_lock(&g_lock);
     g_battery = *state;
     g_battery.flashOnMS = 1000;
-    g_battery.flashOffMS = 0;
+    g_battery.flashOffMS = 2000;
     g_battery.flashMode = LIGHT_FLASH_TIMED;
     handle_speaker_battery_locked(dev, state, 0);
     pthread_mutex_unlock(&g_lock);
