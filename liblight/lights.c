@@ -121,6 +121,17 @@ set_light_buttons(struct light_device_t* dev,
     return err;
 }
 
+static int 
+set_light_buttons_from_backlight( int state )
+{
+    int err = 0;
+    int on = is_lit(state);
+    pthread_mutex_lock(&g_lock);
+    err = write_int(BUTTON_FILE, on?1:0);
+    pthread_mutex_unlock(&g_lock);
+    return err;
+}
+
 static int
 set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
@@ -130,6 +141,7 @@ set_light_backlight(struct light_device_t* dev,
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
+    set_light_buttons_from_backlight(state);
     return err;
 }
 
@@ -243,7 +255,7 @@ set_light_battery(struct light_device_t* dev,
     pthread_mutex_lock(&g_lock);
     g_battery = *state;
     g_battery.flashOnMS = 1000;
-    g_battery.flashOffMS = 2000;
+    g_battery.flashOffMS = 0;
     g_battery.flashMode = LIGHT_FLASH_TIMED;
     handle_speaker_battery_locked(dev, state, 0);
     pthread_mutex_unlock(&g_lock);
