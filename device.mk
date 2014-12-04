@@ -46,6 +46,9 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
+
 # Script for baseband name resolution
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/fetch-swv:system/bin/fetch-swv
