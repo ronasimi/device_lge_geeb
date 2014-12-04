@@ -45,6 +45,7 @@ PRODUCT_PACKAGES += \
         LiveWallpapersPicker \
         VisualizationWallpapers \
         librs_jni
+LOCAL_KERNEL := kernel/lge/msm/arch/arm/boot/zImage
 
 PRODUCT_COPY_FILES := \
 	$(LOCAL_KERNEL):kernel
