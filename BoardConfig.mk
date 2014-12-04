@@ -40,10 +40,6 @@ COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 
 TARGET_NO_BOOTLOADER := true
 
-# Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/lge/msm
-TARGET_KERNEL_CONFIG := geeb_defconfig
-
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=geeb lpj=67677 user_debug=31
