@@ -158,7 +158,7 @@ BOARD_SEPOLICY_UNION += \
        thermald.te \
        ueventd.te
 
-BOARD_HARDWARE_CLASS := device/lge/geeb/cmhw/
+
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
