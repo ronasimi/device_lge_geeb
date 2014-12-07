@@ -283,6 +283,34 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu3/online 1
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
+    # Chown cpu online files as needed for the Settings app
+    chown system system /sys/devices/system/cpu/cpu1/online
+    chown system system /sys/devices/system/cpu/cpu2/online
+    chown system system /sys/devices/system/cpu/cpu3/online
+
+    # Hardware tunables
+    chown root system /sys/class/timed_output/vibrator/amp
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_r
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_g
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_b
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+    chmod 0664 /sys/class/timed_output/vibrator/amp
+    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_r
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_g
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_b
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+    restorecon /sys/class/timed_output/vibrator/amp
+    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
+    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_r
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_g
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_b
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+
     # disable diag port
     rm /dev/diag
 
@@ -497,4 +525,99 @@ on property:sys.hdmi.block=unblock
 
 on property:sys.hdmi.block=internal_block
     write /sys/devices/virtual/graphics/fb1/hdmi_external_block internal_block
+
+# TEMPORARY INIT.D WORKAROUND
+
+
+#########################
+## This file allows you
+## to customize options
+## for the kernel without
+## installing a control 
+## app like trickstermod.
+## Credit to paulicat for
+## the original file.
+#########################
+
+#########################
+## FS tweaks ############
+echo 2048 > /sys/block/mmcblk0/queue/read_ahead_kb
+
+#########################
+## Enable fast charge ###
+echo 1 > /sys/kernel/fast_charge/force_fast_charge
+
+#########################
+## Set voltages #########
+echo 162000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 270000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 378000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 384000 750000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 432000 775000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 486000 775000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 540000 800000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 594000 800000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 648000 825000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 702000 825000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 756000 875000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 810000 875000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 864000 900000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 918000 900000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 972000 925000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1026000 925000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1080000 975000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1134000 975000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1188000 1000000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1242000 1000000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1296000 1025000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1350000 1025000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1404000 1037500 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1458000 1037500 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+echo 1512000 1050000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+
+#########################
+## Audio volume tweaks ##
+echo 45 45 > /sys/kernel/sound_control/gpl_headphone_gain
+echo 45 45 > /sys/kernel/sound_control/gpl_headphone_pa_gain
+echo 45 > /sys/kernel/sound_control/gpl_speaker_gain
+
+#########################
+## Vibration intensity ##
+#echo "70">/sys/class/timed_output/vibrator/amp
+
+#########################
+## Colour tweaks ########
+## LEAVE THIS IN
+echo 1 > /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+
+## Custom (nice balance of saturation and gamma)
+echo "362 64 21 118 0 29 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+echo "410 114 21 118 0 27 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+echo "409 114 21 118 0 26 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+echo "245 248 247" > /sys/devices/platform/kcal_ctrl.0/kcal
+## LG
+#echo "212 114 21 118 0 0 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 114 21 118 0 0 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 114 21 118 0 0 0 80 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "255 255 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+## Google
+#echo "212 32 35 116 0 31 16 80 51 3" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 64 68 118 1 0 0 48 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 64 68 118 1 0 0 48 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "255 255 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+## PA-Halfbreed
+#echo "212 64 68 118 0 25 4 66 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 64 68 118 0 25 4 66 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 64 68 118 0 25 4 66 32 1" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "255 255 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+## PA-Contrasty
+#echo "212 64 68 118 0 26 0 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 64 68 118 0 26 0 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 64 68 118 0 26 0 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "245 244 240" > /sys/devices/platform/kcal_ctrl.0/kcal
+## PA-Brighter
+#echo "212 49 21 118 0 31 9 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_b
+#echo "210 49 21 118 0 31 9 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_g
+#echo "208 49 21 118 0 31 9 64 48 2" > /sys/devices/platform/mipi_lgit.1537/kgamma_r
+#echo "245 244 240" > /sys/devices/platform/kcal_ctrl.0/kcal
 
