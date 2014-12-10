@@ -146,7 +146,6 @@ BOARD_SEPOLICY_UNION += \
        file_contexts \
        hostapd.te \
        kickstart.te \
-       kcal_dev.te \
        mediaserver.te \
        mpdecision.te \
        netmgrd.te \
@@ -162,7 +161,6 @@ BOARD_SEPOLICY_UNION += \
        tee.te \
        te_macros \
        thermald.te \
-       vibe_dev.te \
        ueventd.te
 
 BOARD_HARDWARE_CLASS := device/lge/geeb/cmhw/
