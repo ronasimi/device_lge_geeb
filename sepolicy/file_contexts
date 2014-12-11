@@ -140,3 +140,6 @@
 /sys/devices/platform/mipi_lgit.1537/kgamma.* u:object_r:kgamma_sysfs:s0
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
 
+#init.d
+/etc/init.d/.*				u:object_r:init_d:s0
+

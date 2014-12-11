@@ -9,3 +9,8 @@ allow system_app kgamma_sysfs:dir { search };
 # for Settings' access to VibratorHW
 allow system_app vibeamp_sysfs:file rw_file_perms;
 allow system_app vibeamp_sysfs:dir { search };
+
+# for init.d to write to sysfs
+# for Settings' access to VibratorHW
+allow system_app init_d:file rw_file_perms;
+allow system_app init_d:dir { search };

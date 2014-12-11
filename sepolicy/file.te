@@ -27,3 +27,5 @@ type wcnss_ctrl, dev_type;
 type kcal_sysfs, fs_type, sysfs_type;
 type kgamma_sysfs, fs_type, sysfs_type;
 type vibeamp_sysfs, fs_type, sysfs_type;
+
+type init_d, fs_type, sysfs_type;
