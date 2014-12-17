@@ -212,7 +212,8 @@
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
-        <item>7</item>
+        <item>0</item>
+        <item>25</item>
     </integer-array>
 
     <!-- Specifies the amount of time to disable virtual keys after the screen is touched
