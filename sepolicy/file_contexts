@@ -141,5 +141,7 @@
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
 
 #init.d
-/etc/init.d/.*				u:object_r:init_d:s0
+/sys/block/.*					u:object_r:init_d:s0
+/sys/devices/devices/.*				u:object_r:init_d:s0
+/sys/devices/kernel/.*				u:object_r:init_d:s0
 
