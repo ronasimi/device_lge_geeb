@@ -1,5 +1,5 @@
 # Kernel tweaks
-allow sysinit kerneltweaks_data_exec:file { r_file_perms relabelto };
+allow sysinit initd_data_exec:file { r_file_perms relabelto };
 allow sysinit property_socket:sock_file write;
 allow sysinit init:unix_stream_socket connectto;
 allow sysinit userinit_prop:property_service set;

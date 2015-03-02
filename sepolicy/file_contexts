@@ -141,4 +141,4 @@
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
 
 # Custom init script
-/etc/init.d/99kerneltweaks                 u:object_r:kerneltweaks_data_exec:s0
+/etc/init.d/*                 u:object_r:initd_data_exec:s0

@@ -1,1 +1,1 @@
-type kerneltweaks_data_exec, file_type;
+type initd_data_exec, file_type;
